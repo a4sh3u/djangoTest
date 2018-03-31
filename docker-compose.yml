@@ -1,0 +1,15 @@
+version: '2'
+services:
+  poll:
+    container_name: 'poll'
+    build: .
+
+  nginx:
+    image: nginx:latest
+    container_name: "nginx"
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - $(pwd)/nginx/tls:/etc/nginx/tls
+      - $(pwd)/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
