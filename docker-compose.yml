@@ -3,7 +3,7 @@ services:
   poll:
     container_name: 'poll'
     build: .
-    command: python3 /code/mysite/manage.py runserver
+    command: python3 /code/mysite/manage.py runserver 0:8000
 
   nginx:
     image: nginx:latest
