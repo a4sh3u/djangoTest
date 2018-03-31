@@ -14,6 +14,8 @@ node {
       sh 'docker exec poll /code/mysite/manage.py test /code/mysite'
       sh 'if [ $(curl -k -L -s -o /dev/null -w "%{http_code}" https://localhost/admin/) -ne 200 ]; then exit 1 ; else echo "Service is fully functional"; fi'
 
+    stage 'Deploy'
+      sh 'docker exec --rm -v $(pwd)/deploy/hosts:/etc/ansible/hosts -v $(pwd)/deploy/ansible.cfg:/etc/ansible/ansible.cfg -v $(pwd)/deploy:/deploy williamyeh/ansible:ubuntu16.04 ansible-playbook /deploy/app_deploy.yml'
     stage 'Cleanup'
       sh "docker-compose rm -fsv"
 }
