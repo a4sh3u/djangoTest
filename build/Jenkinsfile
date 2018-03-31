@@ -4,7 +4,7 @@ node {
 
     stage 'Checkout'
       checkout scm
-      sh "echo aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+
     stage 'Build'
       sh 'docker-compose pull '
       sh 'docker-compose build'
