@@ -11,5 +11,5 @@ services:
       - "443:443"
       - "80:80"
     volumes:
-      - "$(pwd)/nginx/tls:/etc/nginx/tls"
-      - "$(pwd)/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf"
+      - "./nginx/tls:/etc/nginx/tls"
+      - "./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf"
