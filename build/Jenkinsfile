@@ -11,7 +11,7 @@ node {
       sh 'docker-compose up -d'
 
     stage 'Testing'
-      sh 'docker exec -ti poll /code/mysite/manage.py test /code/mysite'
+      sh 'docker exec poll /code/mysite/manage.py test /code/mysite'
 
     stage 'Cleanup'
       sh "docker-compose rm -fsv"
