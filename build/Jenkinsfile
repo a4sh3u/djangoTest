@@ -12,7 +12,7 @@ node {
 
     stage 'Testing'
       sh 'docker exec poll /code/mysite/manage.py test /code/mysite'
-      sh 'if [ ! $(curl -k -L -s -o /dev/null -w "%{http_code}" https://localhost/admin/) -eq 200 ]; then exit 1 ; fi'
+      sh 'if [ $(curl -k -L -s -o /dev/null -w "%{http_code}" https://localhost/admin/) -ne 200 ]; then exit 1 ; fi'
 
     stage 'Cleanup'
       sh "docker-compose rm -fsv"
