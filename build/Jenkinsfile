@@ -15,6 +15,7 @@ node {
       sh 'if [ $(curl -k -L -s -o /dev/null -w "%{http_code}" https://localhost/admin/) -ne 200 ]; then exit 1 ; else echo "Service is fully functional"; fi'
 
     stage 'Deploy'
+      sh 'source aws_variables.sh'
       sh './deploy/aws_provision.sh'
 
     stage 'Cleanup'
